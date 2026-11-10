@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sheonator Pseak – Hurdy-gurdy, bells and shadow</title>
+<meta name="description" content="Sheonator Pseak: old songs, new light. Hurdy-gurdy, bells and shadow.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#120a06">
+</head>
+<body>
+<style>
+@font-face{font-family:'IM Fell English SC';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/IMFellEnglishSC-Regular.woff') format('woff');}
+@font-face{font-family:'Spectral';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/Spectral-Regular.woff') format('woff');}
+@font-face{font-family:'Spectral';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/Spectral-Medium.woff') format('woff');}
+@font-face{font-family:'Spectral';font-style:italic;font-weight:400;font-display:swap;src:url('fonts/Spectral-Italic.woff') format('woff');}
+@font-face{font-family:'IM Fell English';font-style:italic;font-weight:400;font-display:swap;src:url('fonts/IMFellEnglish-Italic.woff') format('woff');}
+
+/* Concept: the viewer stands inside the body of an instrument. Cold light enters through the f-holes
+   at the top, warm cocoa wood fills the walls, and the lyre-shaped patch of light lies on the floor. */
+:root {
+  color-scheme: dark;
+  --ink: #0f0905;
+  --wood-deep: #1a0f09;
+  --wood: #2d1b11;
+  --cocoa: #6a4228;
+  --amber: #e5be8a;
+  --bone: #ece4d6;
+  --muted: #b9aa95;
+  --light: #eef4f8;
+  --light-glow: rgba(172, 205, 232, 0.55);
+  --display: 'IM Fell English SC', 'IM Fell English', Georgia, serif;
+  --serif-italic: 'IM Fell English', Georgia, serif;
+  --body: 'Spectral', Georgia, serif;
+  --grain: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27360%27 height=%27360%27%3E%3Cfilter id=%27g%27 x=%270%27 y=%270%27 width=%27100%25%27 height=%27100%25%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.85 0.012%27 numOctaves=%273%27 seed=%277%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix values=%270 0 0 0 0.62  0 0 0 0 0.38  0 0 0 0 0.2  0 0 0 1.6 -0.45%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23g)%27/%3E%3C/svg%3E");
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--bone);
+  font: 400 1.0625rem/1.65 var(--body);
+}
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; }
+.band { position: relative; overflow: hidden; isolation: isolate; }
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--grain);
+  background-size: 360px 360px;
+  opacity: 0.55;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse 90% 80% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.72) 100%);
+  pointer-events: none;
+}
+
+/* Hero */
+.hero {
+  background:
+    radial-gradient(ellipse 46% 40% at 50% 46%, rgba(15, 9, 5, 0.66), transparent 78%),
+    linear-gradient(180deg, rgba(15, 9, 5, 0.48) 0%, rgba(15, 9, 5, 0.1) 38%, rgba(28, 17, 10, 0.78) 82%, #1c110a 100%),
+    url("img/hero.jpg") center 42% / cover no-repeat,
+    #1c110a;
+}
+.hero .inner { padding-top: clamp(150px, 29vw, 370px); padding-bottom: 64px; text-align: center; }
+h1 {
+  margin: 0;
+  font: 400 clamp(2.6rem, 9vw, 5.8rem)/1.02 var(--display);
+  letter-spacing: 0.04em;
+  text-wrap: balance;
+  text-shadow: 0 0 46px rgba(229, 190, 138, 0.38), 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+.tagline {
+  margin: 22px auto 0;
+  max-width: 34ch;
+  font: italic 400 clamp(1.1rem, 2.6vw, 1.4rem)/1.5 var(--serif-italic);
+  color: var(--muted);
+  text-wrap: balance;
+}
+.strings {
+  margin: 28px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+  font: 400 0.76rem/1.2 var(--display);
+  letter-spacing: 0.24em;
+  color: #d8a35f;
+  text-transform: uppercase;
+}
+.strings i { font-style: normal; opacity: 0.6; }
+@media (max-width: 480px) { .strings { letter-spacing: 0.16em; font-size: 0.72rem; } }
+nav { margin-top: 34px; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 34px; }
+nav a {
+  font: 400 1rem/1 var(--display);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 2px;
+  border-bottom: 1px solid transparent;
+  color: var(--bone);
+}
+nav a:hover { border-color: var(--amber); color: #fff; }
+
+/* Section headings */
+h2 {
+  margin: 0 0 30px;
+  font: 400 clamp(1.7rem, 4.5vw, 2.4rem)/1.1 var(--display);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(229, 190, 138, 0.55), transparent); }
+
+/* Releases */
+.releases {
+  background:
+    linear-gradient(180deg, #1c110a 0%, rgba(28, 17, 10, 0.86) 14%, rgba(26, 15, 9, 0.82) 70%, #1a0f09 100%),
+    url("img/corridor.jpg") center / cover no-repeat,
+    #1a0f09;
+}
+.releases .inner { padding-top: 64px; padding-bottom: 72px; }
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px 18px;
+}
+@media (min-width: 720px) {
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 26px; }
+}
+.grid > li { display: flex; }
+.card { flex: 1; min-width: 0; display: block; text-decoration: none; position: relative; transition: transform 0.25s, filter 0.25s; }
+.card:hover, .card:focus-visible { transform: translateY(-3px); filter: brightness(1.1); }
+.cover { position: relative; aspect-ratio: 1; max-width: 100%; display: grid; place-items: center; overflow: hidden; }
+.cover b { position: relative; z-index: 2; display: grid; justify-items: center; gap: 4px; font-weight: 400; font-variant-numeric: tabular-nums; }
+.cover .y { font: 400 clamp(1.4rem, 4.6vw, 2.1rem)/1 var(--display); letter-spacing: 0.12em; color: rgba(236, 228, 214, 0.72); }
+.cover .r { display: none; font: 400 0.7rem/1 var(--display); letter-spacing: 0.2em; }
+.meta { margin-top: 14px; }
+.meta .t { display: block; font: 500 1.02rem/1.3 var(--body); text-wrap: balance; overflow-wrap: anywhere; }
+.meta .d { display: block; margin-top: 5px; font: 400 0.78rem/1 var(--display); letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); }
+
+.cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; z-index: 0; }
+.cover.has-img b { display: none; }
+/* Placeholder art (real covers replace it) */
+.grid .cover { background: radial-gradient(circle at 50% 30%, rgba(172, 205, 232, 0.14), transparent 60%), linear-gradient(160deg, #2a1a10, #140b06); }
+.grid .cover .y { color: rgba(236, 228, 214, 0.55); }
+.grid[data-style] .meta .t { text-wrap: balance; }
+
+/* 7. Spill of light */
+.grid[data-style="light"] .cover { border-radius: 2px; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(222, 188, 148, 0.4), transparent 70%), linear-gradient(180deg, #231610, #0d0704); box-shadow: 0 -26px 60px -26px rgba(222, 186, 146, 0.5), inset 0 1px 0 rgba(240, 222, 190, 0.26), 0 20px 30px -14px #000; transition: box-shadow 0.3s; }
+.grid[data-style="light"] .card:hover .cover { box-shadow: 0 -30px 70px -20px rgba(224, 190, 150, 0.72), inset 0 1px 0 rgba(240, 224, 196, 0.4), 0 20px 30px -14px #000; }
+.grid[data-style="light"] .meta { text-align: center; margin-top: 18px; }
+.grid[data-style="light"] .meta .t { font: 400 0.92rem/1.3 var(--display); letter-spacing: 0.16em; text-transform: uppercase; }
+.grid[data-style="light"] .meta .d { color: #dcc093; }
+
+/* Floor: about + listen */
+.floor {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 148px, rgba(0, 0, 0, 0.42) 148px 150px),
+    linear-gradient(180deg, #1a0f09 0%, #120a06 100%);
+}
+.floor .inner { padding-top: 70px; padding-bottom: 36px; }
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+@media (min-width: 820px) {
+  .about { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 24px; }
+}
+.about p { margin: 0; max-width: 52ch; font-size: 1.14rem; }
+.about p + p { margin-top: 1em; color: var(--muted); }
+.about-img { justify-self: center; width: min(100%, 560px); margin: -10px 0; }
+.about-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: radial-gradient(ellipse 60% 62% at 50% 50%, #000 38%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 62% at 50% 50%, #000 38%, transparent 100%);
+}
+.listen { margin-top: 74px; }
+.links { display: flex; flex-wrap: wrap; gap: 14px; }
+.links a {
+  flex: 1 1 180px;
+  text-align: center;
+  padding: 18px 20px;
+  font: 400 1.05rem/1 var(--display);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(229, 190, 138, 0.5);
+  background: rgba(0, 0, 0, 0.22);
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+}
+.links a:hover, .links a:focus-visible { background: var(--amber); color: #1a0f09; box-shadow: 0 0 30px rgba(229, 190, 138, 0.35); }
+.social { margin-top: 56px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 4px; }
+.social a { display: grid; place-items: center; width: 36px; height: 36px; color: var(--muted); transition: color .25s, transform .25s; }
+.social a svg { fill: currentColor; }
+.social a:hover, .social a:focus-visible { color: var(--amber); transform: translateY(-2px); }
+.legal { display: flex; justify-content: center; gap: 22px; margin-top: 18px; }
+.legal a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; font-size: .74rem; }
+.legal a:hover, .legal a:focus-visible { color: var(--amber); border-color: var(--amber); }
+footer { padding: 24px 0 40px; text-align: center; font: 400 0.78rem/1 var(--display); letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card { transition: none; }
+}
+</style>
+
+<header class="band hero grain vignette">
+  <div class="inner">
+    <h1>Sheonator Pseak</h1>
+    <p class="tagline">Old songs, new light.<br>Hurdy-gurdy, bells and shadow.</p>
+    <p class="strings"><span>Chanterelle</span><i>·</i><span>Bourdon</span><i>·</i><span>Trompette</span></p>
+    <nav aria-label="Sections">
+      <a href="#music">Music</a>
+      <a href="#about">About</a>
+      <a href="#listen">Listen</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="band releases grain vignette" id="music">
+    <div class="inner">
+      <h2>Releases</h2>
+      <!-- Cover images go into .cover in place of the year. -->
+      <ul class="grid" data-style="light">
+        <li><a class="card" href="https://sheonatorpseak.bandcamp.com/releases"><div class="cover"><b><span class="y">2026</span><span class="r">MMXXVI</span></b></div><div class="meta"><span class="t">Ceremony of Return</span><span class="d">Mar 2026</span></div></a></li>
+        <li><a class="card" href="https://sheonatorpseak.bandcamp.com/releases"><div class="cover"><b><span class="y">2025</span><span class="r">MMXXV</span></b></div><div class="meta"><span class="t">Lamento Della Ninfa</span><span class="d">Nov 2025</span></div></a></li>
+        <li><a class="card" href="https://sheonatorpseak.bandcamp.com/releases"><div class="cover has-img"><img src="img/golden.jpg" alt="" width="1400" height="788" loading="lazy"><b><span class="y">2025</span><span class="r">MMXXV</span></b></div><div class="meta"><span class="t">Golden Tears</span><span class="d">Jun 2025</span></div></a></li>
+        <li><a class="card" href="https://sheonatorpseak.bandcamp.com/releases"><div class="cover"><b><span class="y">2025</span><span class="r">MMXXV</span></b></div><div class="meta"><span class="t">Stomping Dukes</span><span class="d">Mar 2025</span></div></a></li>
+        <li><a class="card" href="https://sheonatorpseak.bandcamp.com/releases"><div class="cover"><b><span class="y">2025</span><span class="r">MMXXV</span></b></div><div class="meta"><span class="t">FOREVER LAMENT</span><span class="d">Feb 2025</span></div></a></li>
+        <li><a class="card" href="https://sheonatorpseak.bandcamp.com/releases"><div class="cover"><b><span class="y">2025</span><span class="r">MMXXV</span></b></div><div class="meta"><span class="t">POPULAR TASTE</span><span class="d">Feb 2025</span></div></a></li>
+        <li><a class="card" href="https://sheonatorpseak.bandcamp.com/releases"><div class="cover"><b><span class="y">2022</span><span class="r">MMXXII</span></b></div><div class="meta"><span class="t">HURDY GURDY INVOCATION</span><span class="d">May 2022</span></div></a></li>
+        <li><a class="card" href="https://sheonatorpseak.bandcamp.com/releases"><div class="cover"><b><span class="y">2019</span><span class="r">MMXIX</span></b></div><div class="meta"><span class="t">HOROLOGICAL FLOWER</span><span class="d">Jan 2019</span></div></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band floor grain vignette">
+    <div class="inner">
+      <div class="about" id="about">
+        <div>
+          <h2>About</h2>
+          <p>One man band since 2017 between European and Eastern cultures and music, particularly from the Middle Ages and the Renaissance.</p>
+          <p>Based in Berlin, Germany.</p>
+        </div>
+        <div class="about-img"><img src="img/lyre.jpg" alt="" width="2473" height="1632" loading="lazy"></div>
+      </div>
+
+      <div class="listen" id="listen">
+        <h2>Listen &amp; Follow</h2>
+        <div class="links">
+          <a href="https://sheonatorpseak.bandcamp.com">Bandcamp</a>
+          <a href="https://www.youtube.com/c/SheonatorPseak" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://soundcloud.com/user-901698786" target="_blank" rel="noopener">SoundCloud</a>
+        </div>
+      </div>
+      <div class="social" aria-label="Social media"><a href="https://www.facebook.com/sheonator.p" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036 27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647"/></svg></a><a href="https://www.instagram.com/sheonatorpseak/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M7.03.084c-1.277.06-2.149.264-2.91.563a5.9 5.9 0 0 0-2.124 1.388 5.9 5.9 0 0 0-1.38 2.127C.321 4.926.12 5.8.064 7.076s-.069 1.688-.063 4.947.021 3.667.083 4.947c.061 1.277.264 2.149.563 2.911.308.789.72 1.457 1.388 2.123a5.9 5.9 0 0 0 2.129 1.38c.763.295 1.636.496 2.913.552 1.278.056 1.689.069 4.947.063s3.668-.021 4.947-.082c1.28-.06 2.147-.265 2.91-.563a5.9 5.9 0 0 0 2.123-1.388 5.9 5.9 0 0 0 1.38-2.129c.295-.763.496-1.636.551-2.912.056-1.28.07-1.69.063-4.948-.006-3.258-.02-3.667-.081-4.947-.06-1.28-.264-2.148-.564-2.911a5.9 5.9 0 0 0-1.387-2.123 5.86 5.86 0 0 0-2.128-1.38C19.074.322 18.202.12 16.924.066 15.647.009 15.236-.006 11.977 0S8.31.021 7.03.084m.14 21.693c-1.17-.05-1.805-.245-2.228-.408a3.7 3.7 0 0 1-1.382-.895 3.7 3.7 0 0 1-.9-1.378c-.165-.423-.363-1.058-.417-2.228-.06-1.264-.072-1.644-.08-4.848-.006-3.204.006-3.583.061-4.848.05-1.169.246-1.805.408-2.228.216-.561.477-.96.895-1.382a3.7 3.7 0 0 1 1.379-.9c.423-.165 1.057-.361 2.227-.417 1.265-.06 1.644-.072 4.848-.08 3.203-.006 3.583.006 4.85.062 1.168.05 1.804.244 2.227.408.56.216.96.475 1.382.895s.681.817.9 1.378c.165.422.362 1.056.417 2.227.06 1.265.074 1.645.08 4.848.005 3.203-.006 3.583-.061 4.848-.051 1.17-.245 1.805-.408 2.23-.216.56-.477.96-.896 1.38a3.7 3.7 0 0 1-1.378.9c-.422.165-1.058.362-2.226.418-1.266.06-1.645.072-4.85.079s-3.582-.006-4.848-.06m9.783-16.192a1.44 1.44 0 1 0 1.437-1.442 1.44 1.44 0 0 0-1.437 1.442M5.839 12.012a6.161 6.161 0 1 0 12.323-.024 6.162 6.162 0 0 0-12.323.024M8 12.008A4 4 0 1 1 12.008 16 4 4 0 0 1 8 12.008"/></svg></a><a href="https://www.youtube.com/c/SheonatorPseak" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"/></svg></a><a href="https://soundcloud.com/user-901698786" target="_blank" rel="noopener" aria-label="SoundCloud"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M23.999 14.165c-.052 1.796-1.612 3.169-3.4 3.169h-8.18a.68.68 0 0 1-.675-.683V7.862a.75.75 0 0 1 .452-.724s.75-.513 2.333-.513a5.36 5.36 0 0 1 2.763.755 5.43 5.43 0 0 1 2.57 3.54c.282-.08.574-.121.868-.12.884 0 1.73.358 2.347.992s.948 1.49.922 2.373M10.721 8.421c.247 2.98.427 5.697 0 8.672a.264.264 0 0 1-.53 0c-.395-2.946-.22-5.718 0-8.672a.264.264 0 0 1 .53 0M9.072 9.448c.285 2.659.37 4.986-.006 7.655a.277.277 0 0 1-.55 0c-.331-2.63-.256-5.02 0-7.655a.277.277 0 0 1 .556 0m-1.663-.257c.27 2.726.39 5.171 0 7.904a.266.266 0 0 1-.532 0c-.38-2.69-.257-5.21 0-7.904a.266.266 0 0 1 .532 0m-1.647.77a26.1 26.1 0 0 1-.008 7.147.272.272 0 0 1-.542 0 28 28 0 0 1 0-7.147.275.275 0 0 1 .55 0m-1.67 1.769c.421 1.865.228 3.5-.029 5.388a.257.257 0 0 1-.514 0c-.21-1.858-.398-3.549 0-5.389a.272.272 0 0 1 .543 0Zm-1.655-.273c.388 1.897.26 3.508-.01 5.412-.026.28-.514.283-.54 0-.244-1.878-.347-3.54-.01-5.412a.283.283 0 0 1 .56 0m-1.668.911c.4 1.268.257 2.292-.026 3.572a.257.257 0 0 1-.514 0c-.241-1.262-.354-2.312-.023-3.572a.283.283 0 0 1 .563 0"/></svg></a><a href="https://music.apple.com/de/artist/sheonator-pseak/1487784449" target="_blank" rel="noopener" aria-label="Apple Music"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M23.994 6.124a9.2 9.2 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5 5 0 0 0-1.877-.726 10.5 10.5 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986q-.227.014-.455.026c-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408a11 11 0 0 0-.1 1.18c0 .032-.007.062-.01.093v12.223q.014.211.027.424c.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a13 13 0 0 0 1.57-.1c.822-.106 1.596-.35 2.295-.81a5.05 5.05 0 0 0 1.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14q-.524.15-1.07.173c-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 0 1 1.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a1 1 0 0 0 .02-.193q0-2.723-.002-5.443a.7.7 0 0 0-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066q-1.14.226-2.28.456l-2.325.47-1.374.278q-.024.007-.048.013c-.277.077-.377.203-.39.49q-.002.063 0 .13c-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233q-.526.152-1.075.172c-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177q.574-.126.6-.714v-.15q0-4.441.002-8.882c0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165q1.1-.224 2.2-.444l2.27-.46q1.005-.202 2.01-.403c.22-.043.442-.088.663-.106.31-.025.523.17.554.482q.012.11.012.223.003 2.866 0 5.732z"/></svg></a><a href="https://open.spotify.com/artist/6g8HQhzrrpFCLM9M2Cc0Qo" target="_blank" rel="noopener" aria-label="Spotify"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0m5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02m1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6s.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2m.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3"/></svg></a><a href="https://www.tiktok.com/@sheonator_pseak" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07"/></svg></a></div>
+      <footer>&copy; 2026 Sheonator Pseak<nav class="legal" aria-label="Legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav></footer>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
